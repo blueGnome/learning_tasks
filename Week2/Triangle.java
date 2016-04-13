@@ -39,7 +39,6 @@ public class Triangle {
 			}
 			sb.append("\n");
 		}
-		
 		System.out.println(sb);
 	}
 	
