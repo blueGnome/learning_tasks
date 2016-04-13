@@ -10,14 +10,24 @@ public class Triangle {
 	
 	private static Long getFactorial(Integer k) {
 		Long factorial = 1L;
-		for (int i = 2; i <= k; ++i) {
+		for (int i = 2; i <= k; i++) {
 			factorial = i * factorial;
 		}
 		return factorial;
 	}
 	
+	private static Long getMuntiplication(Integer a, Integer b) {
+		Long result = 1L;
+		for (int i = a; i <= b; i++) {
+			result = i * result;
+		}
+		return result;
+	}
+	
 	private static Long C(int n, int k) {
-		return getFactorial(n) / (getFactorial(k) * getFactorial(n - k));
+		Integer max = Integer.max(k, n-k);
+		Integer min = Integer.min(k, n-k);
+		return getMuntiplication(max + 1, n) / (getFactorial(min));
 	}
 	
 	public void printTriangle(int n) {
