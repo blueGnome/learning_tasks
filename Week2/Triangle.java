@@ -44,9 +44,21 @@ public class Triangle {
 	}
 	
 	public static void main(String[] args) throws IOException {
+		double startMemoryCounter = Runtime.getRuntime().totalMemory();
+		double finishMemoryCounter;
+		long beginTimer;
+		long endTimer;
+		
+		beginTimer = System.nanoTime();
+		
 		Triangle triangle = new Triangle();
 		
 		int n = triangle.getN();
 		triangle.printTriangle(n);
+		
+		endTimer = System.nanoTime();
+		finishMemoryCounter = Runtime.getRuntime().totalMemory();
+		System.out.println("time: " + (endTimer - beginTimer)*1e-9);
+		System.out.println("memory: " + (finishMemoryCounter - startMemoryCounter));
 	}
 }
