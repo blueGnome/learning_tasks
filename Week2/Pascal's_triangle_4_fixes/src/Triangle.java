@@ -1,3 +1,4 @@
+import java.awt.List;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class Triangle {
 		return factorial;
 	}
 	
-	private static Long getMuntiplication(Integer a, Integer b) {
+	private static Long getMultiplicationAtoB(Integer a, Integer b) {
 		Long result = 1L;
 		for (int i = a; i <= b; i++) {
 			result = i * result;
@@ -24,22 +25,43 @@ public class Triangle {
 		return result;
 	}
 	
-	private static Long C(int n, int k) {
-		Integer max = Integer.max(k, n-k);
-		Integer min = Integer.min(k, n-k);
-		return getMuntiplication(max + 1, n) / (getFactorial(min));
-	}
-	
-	public void printTriangle(int n) {
+		
+	public void fix1_SoutToSBuilder(int _n) {
 		StringBuilder sb = new StringBuilder();
 		
-		for (int i = 0; i <= n; ++i) {
-			for (int j = 0; j <= i; ++j) {
-				sb.append(C(i,j) + " ");
+		for (int n = 0; n <= _n; ++n) {
+			for (int k = 0; k <= n; ++k) {
+				sb.append(C(n,k) + " ");
 			}
 			sb.append("\n");
 		}
 		System.out.println(sb);
+	}
+	
+	private static Long C(int n, int k) {
+		return getFactorial(n) / (getFactorial(k) * getFactorial(n - k));
+	}
+	
+	public void fix2_FactorialToPartMult(int _n) {
+		StringBuilder triangle = new StringBuilder();
+		
+		for (int n = 0; n <= _n; n++) {
+			for (int k = 0; k <= n; k++) {
+				triangle.append(C_update(n, k) + " ");
+			}
+			triangle.append("\n");
+		}
+		System.out.println(triangle);
+	}
+	
+	private static Long C_update(int n, int k) {
+		Integer max = Integer.max(k, n-k);
+		Integer min = Integer.min(k, n-k);
+		return getMultiplicationAtoB(max + 1, n) / (getFactorial(min));
+	}
+	
+	public void fix3_LongToBigInteger(int _n) {
+		List l = new List();
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -53,7 +75,7 @@ public class Triangle {
 		Triangle triangle = new Triangle();
 		
 		int n = triangle.getN();
-		triangle.printTriangle(n);
+		//triangle.printTriangle(n);
 		
 		endTimer = System.nanoTime();
 		finishMemoryCounter = Runtime.getRuntime().totalMemory();
