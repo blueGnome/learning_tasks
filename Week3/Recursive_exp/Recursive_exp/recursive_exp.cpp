@@ -19,8 +19,5 @@ int main()
 	std::cout << "Enter exponent" << std::endl;
 	std::cin >> x;
 
-	std::cout << exponention(a, x);
-
-	std::cin >> a;
-
+	std::cout << exponention(a, x) << std::endl;
 }
