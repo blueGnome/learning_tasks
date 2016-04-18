@@ -1,5 +1,6 @@
 import java.awt.List;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Triangle {
@@ -25,7 +26,6 @@ public class Triangle {
 		return result;
 	}
 	
-		
 	public void fix1_SoutToSBuilder(int _n) {
 		StringBuilder sb = new StringBuilder();
 		
@@ -61,7 +61,37 @@ public class Triangle {
 	}
 	
 	public void fix3_LongToBigInteger(int _n) {
-		List l = new List();
+		StringBuilder triangle = new StringBuilder();
+		
+		for (int n = 0; n <= _n; n++) {
+			for (int k = 0; k <= n; k++) {
+				triangle.append(C_update_BigInt(n, k) + " ");
+			}
+			triangle.append("\n");
+		}
+		System.out.println(triangle);
+	}
+	
+	private static BigInteger C_update_BigInt(int n, int k) {
+		Integer max = Integer.max(k, n-k);
+		Integer min = Integer.min(k, n-k);
+		return getMultiplicationAtoB_BigInt(max + 1, n).divide((getFactorial_BigInt(min)));
+	}
+	
+	private static BigInteger getMultiplicationAtoB_BigInt(Integer a, Integer b) {
+		BigInteger result = BigInteger.ONE;;
+		for (int i = a; i <= b; i++) {
+			result = result.multiply(BigInteger.valueOf(i));
+		}
+		return result;
+	}
+	
+	private static BigInteger getFactorial_BigInt(Integer k) {
+		BigInteger factorial = BigInteger.ONE;
+		for (int i = 2; i <= k; i++) {
+			factorial = factorial.multiply(BigInteger.valueOf(i));
+		}
+		return factorial;
 	}
 	
 	public static void main(String[] args) throws IOException {
