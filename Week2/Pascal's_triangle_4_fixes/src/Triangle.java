@@ -94,22 +94,58 @@ public class Triangle {
 		return factorial;
 	}
 	
+	public void fix4_CalculatingToLists(int _n) {
+//		StringBuilder triangle = new StringBuilder();
+//		List previous = new List();
+//		previous.add("1");
+//		
+//		for (int n = 1; n <= _n; n++) {
+//			
+//			for (int k = 0; k <= n; k++) {
+//				triangle.append(C_update_BigInt(n, k) + " ");
+//			}
+//			triangle.append("\n");
+//		}
+//		System.out.println(triangle);
+	}
+	
 	public static void main(String[] args) throws IOException {
 		double startMemoryCounter = Runtime.getRuntime().totalMemory();
 		double finishMemoryCounter;
-		long beginTimer;
-		long endTimer;
-		
-		beginTimer = System.nanoTime();
+		long beginTimer_1;
+		long beginTimer_2;
+		long beginTimer_3;
+		long beginTimer_4;
+		long endTimer_1;
+		long endTimer_2;
+		long endTimer_3;
+		long endTimer_4;
 		
 		Triangle triangle = new Triangle();
-		
 		int n = triangle.getN();
-		//triangle.printTriangle(n);
 		
-		endTimer = System.nanoTime();
+		beginTimer_1 = System.nanoTime();	
+			triangle.fix1_SoutToSBuilder(n);
+		endTimer_1 = System.nanoTime();
+		
+		beginTimer_2 = System.nanoTime();	
+			triangle.fix2_FactorialToPartMult(n);
+		endTimer_2 = System.nanoTime();
+		
+		beginTimer_3 = System.nanoTime();	
+			triangle.fix3_LongToBigInteger(n);
+		endTimer_3 = System.nanoTime();
+		
+		beginTimer_4 = System.nanoTime();	
+			triangle.fix4_CalculatingToLists(n);
+		endTimer_4 = System.nanoTime();
+		
 		finishMemoryCounter = Runtime.getRuntime().totalMemory();
-		System.out.println("time: " + (endTimer - beginTimer)*1e-9);
+		System.out.println("time_1: " + (endTimer_1 - beginTimer_1)*1e-9);
+		System.out.println("time_2: " + (endTimer_2 - beginTimer_2)*1e-9);
+		System.out.println("time_3: " + (endTimer_3 - beginTimer_3)*1e-9);
+		System.out.println("time_4: " + (endTimer_4 - beginTimer_4)*1e-9);
+		
 		System.out.println("memory: " + (finishMemoryCounter - startMemoryCounter));
 	}
 }
