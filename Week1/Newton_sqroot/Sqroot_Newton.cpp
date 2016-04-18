@@ -3,11 +3,11 @@
 
 double sqroot_Newton(double x) {
 	double eps = 0.00000000001;
-	double cur = x;
+	double cur = 1;
 	double next = x;
 
 	while (true) {
-		next = 0.5 * (cur + x) / cur;
+		next = (cur * cur + x) / (2 * cur);
 
 		if (abs(cur - next) < eps)
 			break;
@@ -25,8 +25,5 @@ int main()
 	std::cout << "Enter number" << std::endl;
 	std::cin >> n;
 
-	sqroot = sqroot_Newton(n);
-
-	std::cout << std::endl << sqroot;
-	std::cin;
+	std::cout << std::endl << sqroot_Newton(n) << std::endl;
 }
